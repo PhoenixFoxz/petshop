@@ -5,12 +5,12 @@ import arrayPosts from "@/pages/api/array-posts";
 export default function Post(){
    return <>
    <StyledListaPosts>
-    {arrayPosts.map( (produto) => {
+    {arrayPosts.map( (post) => {
         return <>
             <article>
                 <Link href="">
-                <h3>{produto.titulo}</h3>
-                <p>{produto.subtitulo}</p>
+                <h3>{post.titulo}</h3>
+                <p>{post.subtitulo}</p>
                 </Link>
             </article>   
         </>
