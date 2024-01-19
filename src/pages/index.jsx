@@ -1,6 +1,8 @@
 import Head from "next/head";
 import styled from "styled-components";
 import Post from "@/components/ui/Post";
+import arrayPosts from "@/pages/api/array-posts";
+import { Children } from "react";
 
 export default function Home() {
   return (
@@ -20,7 +22,7 @@ export default function Home() {
       {/* //Antes era <section> mudamos por causa do css */}
       <StyledHome>
         <h2>Pet Notícias</h2>
-        <Post />
+        <Post>{arrayPosts}</Post> 
       </StyledHome>
     </>
   );

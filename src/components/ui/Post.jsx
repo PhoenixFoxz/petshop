@@ -1,11 +1,10 @@
 import Link from "next/link";
 import styled from "styled-components";
-import arrayPosts from "@/pages/api/array-posts";
 
-export default function Post(){
+export default function Post({children}){
    return <>
    <StyledListaPosts>
-    {arrayPosts.map( (post) => {
+    {children.map( (post) => {
         return <>
             <article key={post.id}>
                 <Link href="">
