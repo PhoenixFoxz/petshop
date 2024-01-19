@@ -7,7 +7,7 @@ export default function Container({children}){
 const StyledContainer = styled.div`
     width: 100%;
     background-color: #f7f7f7;
-    box-shadow: var(--sombre-box);
+    box-shadow: var(--sombra-box);
     border-radius: var(--borda-arredondada);
     padding: 1rem;
 `;
