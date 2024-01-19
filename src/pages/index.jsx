@@ -33,6 +33,18 @@ export default function Home() {
               <p>Subtítulo do post...</p>
             </Link>
           </article>
+          <article>
+            <Link href="/">
+              <h3>Título do post...</h3>
+              <p>Subtítulo do post...</p>
+            </Link>
+          </article>
+          <article>
+            <Link href="/">
+              <h3>Título do post...</h3>
+              <p>Subtítulo do post...</p>
+            </Link>
+          </article>
         </StyledListaPosts>
       </StyledHome>
     </>
@@ -52,6 +64,16 @@ const StyledListaPosts = styled.div`
   article:hover {
     cursor: pointer;
     transform: scale(1.05);
+  }
+
+  @media screen and (min-width: 500px) {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    article {
+      width: 49%;
+    }
   }
 
   & a {
