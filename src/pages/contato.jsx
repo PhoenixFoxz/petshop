@@ -61,6 +61,7 @@ const StyledContato = styled.section`
     font-size: medium;
     transition: 0.25s;
     cursor: pointer;
+    box-shadow: var(--sombra-box);
   }
 
   button:hover {
