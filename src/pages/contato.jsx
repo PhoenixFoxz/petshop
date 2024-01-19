@@ -18,16 +18,13 @@ export default function Contato() {
         <h2>Fale Conosco</h2>
         <Container>
           <form action="" method="post">
-            <div>
-              <label htmlFor="nome">Nome:</label>
-              <input type="text" name="nome" id="nome" />
+            <div className="label">
+              <input type="text" name="nome" id="nome" placeholder="Nome" />
             </div>
-            <div>
-              <label htmlFor="email">E-mail:</label>
-              <input type="email" name="email" id="email" />
+            <div className="label">
+              <input type="email" name="email" id="email" placeholder="E-mail" />
             </div>
-            <div>
-              <label htmlFor="mensagem">Mensagem:</label>
+            <div className="label">
               <textarea maxLength={500} name="mensagem" id="mensagem" cols="30" rows="8"></textarea>
             </div>
             <div>
@@ -43,5 +40,29 @@ export default function Contato() {
 const StyledContato = styled.section`
   h2::before {
     content: "💌";
+  }
+
+  .label input, textarea {
+    border: none;
+    box-shadow: var(--sombra-box);
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    font-size: 16px;
+    border-radius: var(--borda-arredondada);
+  }
+
+  button {
+    margin: 30px;
+    border: none;
+    padding: 20px;
+    margin-left: auto;
+    border-radius: var(--borda-arredondada);
+    font-size: medium;
+  }
+
+  button:hover {
+    background: #0b0a3f;
+    color: white;
   }
 `;
