@@ -15,6 +15,25 @@ export default function Produtos() {
       {/* //Antes era <section> mudamos por causa do css */}
       <StyledProduto>
         <h2>Conheça nossos Produtos</h2>
+
+        <article>
+          <h3>Banho</h3>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore voluptas officia saepe delectus animi facilis possimus consequuntur molestias ipsam fugiat, tempore, architecto voluptate ipsa? Placeat perspiciatis, laudantium quas accusamus totam modi sed sint quidem exercitationem, quae, adipisci consequuntur iste necessitatibus!
+          </p>
+        </article>
+        <article>
+          <h3>Tosa</h3>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore voluptas officia saepe delectus animi facilis possimus consequuntur molestias ipsam fugiat, tempore, architecto voluptate ipsa? Placeat perspiciatis, laudantium quas accusamus totam modi sed sint quidem exercitationem, quae, adipisci consequuntur iste necessitatibus!
+          </p>
+        </article>
+        <article>
+          <h3>Castração</h3>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore voluptas officia saepe delectus animi facilis possimus consequuntur molestias ipsam fugiat, tempore, architecto voluptate ipsa? Placeat perspiciatis, laudantium quas accusamus totam modi sed sint quidem exercitationem, quae, adipisci consequuntur iste necessitatibus!
+          </p>
+        </article>
       </StyledProduto>
     </>
   );
