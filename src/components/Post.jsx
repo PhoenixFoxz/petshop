@@ -1,10 +1,10 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-export default function Post({children}){
+export default function Post({Post}){
    return <>
    <StyledListaPosts>
-    {children.map( (post) => {
+    {Post.map( (post) => {
         return <>
             <article key={post.id}>
                 <Link href="">
@@ -12,7 +12,7 @@ export default function Post({children}){
                 <p>{post.subtitulo}</p>
                 </Link>
             </article>   
-        </>
+        </> 
     })}
    </StyledListaPosts>
    </>
