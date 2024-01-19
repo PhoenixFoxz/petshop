@@ -60,6 +60,7 @@ const StyledContato = styled.section`
     border-radius: var(--borda-arredondada);
     font-size: medium;
     transition: 0.25s;
+    cursor: pointer;
   }
 
   button:hover {
