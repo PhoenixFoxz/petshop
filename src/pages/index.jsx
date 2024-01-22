@@ -1,7 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
 import Post from "@/components/Post";
-import arrayPosts from "@/pages/api/array-posts";
 
 export default function Home() {
   return (
