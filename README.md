@@ -25,6 +25,28 @@ n dev
 
 5. Executar a API usando `npm run api`
 
+- para instalar o json-server: 
+
+para instalar globalmente para projetos futuros a versão deste projeto 1.0.0 alpha.21 
+`npm install -g json-server`
+
+- para executar recomendado o node: 
+
+`json-server --watch nomeDoArquivoDesejado` neste caso db.json 
+
+- para desconfigurar da porta padrão:
+
+use o ipconfig 
+`json-server --host ipDaMaquina nomeDoArquivoDesejado  --port numeroDaPorta`
+
+para facilitar a vida no package.json e crie um script novo e coloque o a linha de comando acima 
+
+```json
+"scripts": {
+    "api": "json-server --host ipDaMaquina nomeDoArquivoDesejado  --port numeroDaPorta"
+  }
+```
+
 ## Recursos utilizados
 
 - Next.js
