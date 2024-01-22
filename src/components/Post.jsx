@@ -4,18 +4,18 @@ import styled from "styled-components";
 export default function Post({Post}){
    return <>
    <StyledListaPosts>
-    {Post.map( (post) => {
+    {Post.map((post) => {
         return <>
             <article key={post.id}>
-                <Link href="">
+              <Link href="">
                 <h3>{post.titulo}</h3>
                 <p>{post.subtitulo}</p>
-                </Link>
+              </Link>
             </article>   
-        </> 
+          </> 
     })}
    </StyledListaPosts>
-   </>
+  </>
 }
 
 const StyledListaPosts = styled.div`
@@ -49,6 +49,7 @@ const StyledListaPosts = styled.div`
 
     &:hover, &:focus {
     color: #0066ff;
+    transition: 200ms;
   }
   }
 `;
