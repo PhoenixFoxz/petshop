@@ -20,7 +20,7 @@ export default function Home() {
       {/* //Antes era <section> mudamos por causa do css */}
       <StyledHome>
         <h2>Pet Notícias</h2>
-        <Post Post={[{id: 1, titulo: "Teste", subtitulo: "Teste"}]} />
+        <Post Posts={[]} />
       </StyledHome>
     </>
   );
