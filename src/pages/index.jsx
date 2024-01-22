@@ -10,8 +10,13 @@ export default function Home() {
     const carregarPosts = async () => {
       try {
         const resposta = await fetch(`http://10.20.46.36:3000/posts`);
+        if (!resposta.ok) {
+          throw new Error(
+            `Erro requisição: ${resposta.status} - ${resposta.statusText}`
+          );
+        }
+
         const dados = await resposta.json();
-        console.log(dados);
         setListaDePosts(dados);
       } catch (error) {
         console.error("Erro ao carregar Posts: " + error);
