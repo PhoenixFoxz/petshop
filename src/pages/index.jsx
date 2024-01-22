@@ -1,8 +1,26 @@
 import Head from "next/head";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 import Post from "@/components/Post";
 
 export default function Home() {
+  const [listaDePosts, setListaDePosts] = useState([]);
+
+  useEffect(() => {
+    const carregarPosts = async () => {
+      try {
+        const resposta = await fetch(`http://10.20.46.36:3000/posts`);
+        const dados = await resposta.json();
+        console.log(dados);
+        setListaDePosts(dados);
+      } catch (error) {
+        console.error("Erro ao carregar Posts: " + error);
+      }
+    };
+
+    carregarPosts();
+  }, []);
+
   return (
     <>
       <Head>
@@ -20,12 +38,11 @@ export default function Home() {
       {/* //Antes era <section> mudamos por causa do css */}
       <StyledHome>
         <h2>Pet Notícias</h2>
-        <Post Posts={[]} />
+        <Post posts={listaDePosts} />
       </StyledHome>
     </>
   );
 }
-
 
 const StyledHome = styled.section`
   h2::before {
