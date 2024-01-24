@@ -1,9 +1,8 @@
 import Head from "next/head";
 import styled from "styled-components";
-
 import ListaPosts from "@/components/ListaPosts";
 
-import { useState } from "react"; //importação da linha 8 useState(). Primeiro escreve useState
+import { useState, useEffect } from "react"; //importação da linha 8 useState(). Primeiro escreve useState
 import serverApi from "./api/server"; // usamos na linha 16
 
 /* EXECUTADA NO SERVIDOR/BACK-END 
@@ -48,6 +47,19 @@ export default function Home({ posts, categorias }) {
   //Passa a passo do react-fundamento na parte  produto
   const [listaDePosts, SetListaDePosts] = useState(posts);
 
+  const [categoriaSelecionada, setCategoriaSelecionada] = useState(null);
+
+  useEffect(() => {
+    if (categoriaSelecionada) {
+      const postsFiltrados = posts.filter(
+        (post) => post.categoria === categoriaSelecionada
+      );
+      SetListaDePosts(postsFiltrados);
+    } else {
+      SetListaDePosts(posts);
+    }
+  }, [categoriaSelecionada, posts]);
+
   return (
     <>
       <Head>
@@ -68,7 +80,14 @@ export default function Home({ posts, categorias }) {
         {/* arrayPosts vem da pasta api / array-posts */}
         <div>
           {categorias.map((categoria, indice) => {
-            return <button key={indice}>{categoria}</button>;
+            return (
+              <StyledButton
+                key={indice}
+                onClick={() => setCategoriaSelecionada(categoria)}
+              >
+                {categoria}
+              </StyledButton>
+            );
           })}
         </div>
         <ListaPosts posts={listaDePosts} />
@@ -80,5 +99,22 @@ export default function Home({ posts, categorias }) {
 const StyledHome = styled.section`
   h2::before {
     content: "📰";
+  }
+`;
+
+const StyledButton = styled.button`
+  margin: 30px;
+  border: none;
+  padding: 20px;
+  margin-left: 8.73rem;
+  border-radius: var(--borda-arredondada);
+  font-size: medium;
+  transition: 0.25s;
+  cursor: pointer;
+  box-shadow: var(--sombra-box);
+
+  &:hover {
+    background: #0b0a3f;
+    color: white;
   }
 `;
