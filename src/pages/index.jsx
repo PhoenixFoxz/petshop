@@ -20,10 +20,20 @@ export async function getStaticProps() {
       throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
     }
 
+    /* Extraindo as categorias dos posts para um novo array */
+    const categorias = dados.map((post) => post.categoria);
+    console.log(categorias);
+
     /* Após o processamento (desde que não haja erros), a getStaticProps retorna um objeto com uma propriedade chamada "props", e nesta propriedade colocamos um objeto com as props que queremos usar. No caso, usamos uma prop "posts" (podemos dar qualquer nome) e é nela que colocamos os dados. */
+
+    /* Gerando um array de categorias ÚNICAS */
+    const categoriasUnicas = [...new Set(categorias)];
+    console.log(categoriasUnicas);
+
     return {
       props: {
         posts: dados,
+        categorias: categoriasUnicas, // [] provisório
       },
     };
   } catch (error) {
@@ -34,8 +44,9 @@ export async function getStaticProps() {
   }
 }
 //posts pegamos da return linha 20 o {posts}
-export default function Home({ posts }) {
+export default function Home({ posts, categorias }) {
   //Passa a passo do react-fundamento na parte  produto
+  console.log(categorias);
   const [listaDePosts, SetListaDePosts] = useState(posts);
 
   return (
