@@ -46,7 +46,6 @@ export async function getStaticProps() {
 //posts pegamos da return linha 20 o {posts}
 export default function Home({ posts, categorias }) {
   //Passa a passo do react-fundamento na parte  produto
-  console.log(categorias);
   const [listaDePosts, SetListaDePosts] = useState(posts);
 
   return (
@@ -67,6 +66,11 @@ export default function Home({ posts, categorias }) {
       <StyledHome>
         <h2>Pet Notícias</h2>
         {/* arrayPosts vem da pasta api / array-posts */}
+        <div>
+          {categorias.map((categoria) => {
+            return <button>{categoria}</button>;
+          })}
+        </div>
         <ListaPosts posts={listaDePosts} />
       </StyledHome>
     </>
