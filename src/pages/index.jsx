@@ -103,6 +103,7 @@ const StyledHome = styled.section`
 `;
 
 const StyledButton = styled.button`
+  text-transform: capitalize;
   margin: 30px;
   border: none;
   padding: 20px;
