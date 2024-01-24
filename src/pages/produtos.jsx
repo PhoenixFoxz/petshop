@@ -1,5 +1,5 @@
-import Head from "next/head";
 import Container from "@/components/ui/Container";
+import Head from "next/head";
 import styled from "styled-components";
 
 export default function Produtos() {
@@ -16,23 +16,39 @@ export default function Produtos() {
       {/* //Antes era <section> mudamos por causa do css */}
       <StyledProduto>
         <h2>Conheça nossos Produtos</h2>
+
         <Container>
           <article>
-            <h3>Banho</h3>
+            <h3>Ração</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore voluptas officia saepe delectus animi facilis possimus consequuntur molestias ipsam fugiat, tempore, architecto voluptate ipsa? Placeat perspiciatis, laudantium quas accusamus totam modi sed sint quidem exercitationem, quae, adipisci consequuntur iste necessitatibus!
+              Você sabe qual é a melhor ração para cachorro? Mais do que isso,
+              você sabe como as características individuais do seu pet
+              influenciam nessa decisão? Nesta página, disponibilizamos não
+              apenas uma grande quantidade de opções deste produto, mas também
+              nos dedicamos a explicar um pouco sobre o mundo das rações.
             </p>
           </article>
+
           <article>
             <h3>Tosa</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore voluptas officia saepe delectus animi facilis possimus consequuntur molestias ipsam fugiat, tempore, architecto voluptate ipsa? Placeat perspiciatis, laudantium quas accusamus totam modi sed sint quidem exercitationem, quae, adipisci consequuntur iste necessitatibus!
+              Cães que têm pelos longos necessitam fazer tosas regularmente,
+              mesmo que seja apenas para cortar as pontas, pois, isso ajuda a
+              manter o pelo bonito e com menos chances de enredar. Mas,
+              independente do tamanho do pelo, todos os cães devem fazer a
+              chamada tosa higiênica, pois é ela que ajuda a manter seu animal
+              mais limpo e reduz o risco de doenças.
             </p>
           </article>
+
           <article>
-            <h3>Castração</h3>
+            <h3>Remédio</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore voluptas officia saepe delectus animi facilis possimus consequuntur molestias ipsam fugiat, tempore, architecto voluptate ipsa? Placeat perspiciatis, laudantium quas accusamus totam modi sed sint quidem exercitationem, quae, adipisci consequuntur iste necessitatibus!
+              Oferecer remédio para cachorro pode significar a diferença entre
+              recuperar a saúde do seu melhor amigo peludo ou colocá-lo em uma
+              situação ainda mais arriscada do que aquela em que ele se
+              encontra. Por isso, é fundamental só dar medicamentos para
+              cachorro de acordo com a orientação do médico veterinário.
             </p>
           </article>
         </Container>
@@ -49,9 +65,8 @@ const StyledProduto = styled.section`
   article {
     padding: 1rem;
   }
-
   @media screen and (min-width: 800px) {
-    /* Esta div é o StyledContainer, mas com uma formatação que só vale para esta página Produtos */
+    /* Essa div é a  </Container>  ou  StyledContainer,mas com formatação que só vale para essa página*/
     div {
       display: flex;
       justify-content: space-between;
