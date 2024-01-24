@@ -46,8 +46,8 @@ export async function getStaticProps() {
 export default function Home({ posts, categorias }) {
   //Passa a passo do react-fundamento na parte  produto
   const [listaDePosts, SetListaDePosts] = useState(posts);
-
   const [categoriaSelecionada, setCategoriaSelecionada] = useState(null);
+  const [filtroAtivo, setFiltroAtivo] = useState(false);
 
   useEffect(() => {
     if (categoriaSelecionada) {
@@ -55,10 +55,19 @@ export default function Home({ posts, categorias }) {
         (post) => post.categoria === categoriaSelecionada
       );
       SetListaDePosts(postsFiltrados);
+      setFiltroAtivo(true);
     } else {
       SetListaDePosts(posts);
     }
   }, [categoriaSelecionada, posts]);
+
+  const limparFiltro = () => {
+    // Sinalizando o state como filtro inativo (false)
+    setFiltroAtivo(false);
+
+    // Atualizando o state da listaDePosts para os posts originais
+    SetListaDePosts(posts);
+  };
 
   return (
     <>
@@ -89,6 +98,9 @@ export default function Home({ posts, categorias }) {
               </StyledButton>
             );
           })}
+          {filtroAtivo && (
+            <StyledButton onClick={limparFiltro}>Limpar filtro</StyledButton>
+          )}
         </div>
         <ListaPosts posts={listaDePosts} />
       </StyledHome>
@@ -107,7 +119,7 @@ const StyledButton = styled.button`
   margin: 30px;
   border: none;
   padding: 20px;
-  margin-left: 8.73rem;
+  margin-left: auto;
   border-radius: var(--borda-arredondada);
   font-size: medium;
   transition: 0.25s;
