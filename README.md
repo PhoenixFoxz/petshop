@@ -62,23 +62,19 @@ n dev
 
 - para instalar o json-server:
 
-```cmd
-<!-- para instalar globalmente para projetos futuros a versão deste projeto 1.0.0 alpha.21 -->
-npm install -g json-server
-```
+para instalar globalmente para projetos futuros a versão deste projeto 1.0.0 alpha.21
+
+`npm install -g json-server`
 
 - para executar recomendado o node:
 
-```cmd
-json-server --watch nomeDoArquivoDesejado <!-- neste caso db.json -->
-```
+`json-server --watch nomeDoArquivoDesejado <!-- neste caso db.json -->`
 
 - para desconfigurar da porta padrão:
 
-```cmd
-<!-- use o ipconfig -->
-json-server --host ipDaMaquina nomeDoArquivoDesejado  --port numeroDaPorta
-```
+use o ipconfig
+
+`json-server --host ipDaMaquina nomeDoArquivoDesejado  --port numeroDaPorta`
 
 para facilitar a vida no package.json e crie um script novo e coloque o a linha de comando acima
 
