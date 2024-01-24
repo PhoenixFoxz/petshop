@@ -67,8 +67,8 @@ export default function Home({ posts, categorias }) {
         <h2>Pet Notícias</h2>
         {/* arrayPosts vem da pasta api / array-posts */}
         <div>
-          {categorias.map((categoria) => {
-            return <button>{categoria}</button>;
+          {categorias.map((categoria, indice) => {
+            return <button key={indice}>{categoria}</button>;
           })}
         </div>
         <ListaPosts posts={listaDePosts} />
