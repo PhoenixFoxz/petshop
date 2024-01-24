@@ -47,6 +47,12 @@ n dev
 - para ter certeza que instalou abra node.js command prompt e digite `json-server --version` é para aparecer 1.0.0-alpha.21
 - depois jogamos a pasta db.json na raiz do visual . A pasta db.json o professor passou pronta.
 
+## Branch 14-usando-rotas-dinâmicas-para-abrir-post
+
+### Recursos necessários
+
+- Pages/Rotas **dinâmicas** utilizando subpasta (posts) e arquivo nomeado com **colchetes** indicando o nome(s) do(s) parâmetros. No caso, foi criado o `[id].jsx`
+
 ## Branch 11-usando-json-server-como-fake-api
 
 ### Etapas (faça tudo usando o Node.js Command Prompt)
