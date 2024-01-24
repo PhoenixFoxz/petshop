@@ -40,6 +40,7 @@ const StyledListaPosts = styled.div`
       &:hover,
       &:focus {
         color: var(--cor-logo);
+        transition: 200ms;
       }
     }
   }
