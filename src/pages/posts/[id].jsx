@@ -4,9 +4,7 @@ import styled from "styled-components";
 import serverApi from "../api/server";
 
 export async function getStaticProps({ params }) {
-  /* Utilizamos a prop params do getStaticProps 
-  para poder ter acesso aos parâmetros dinâmicos da rota
-  configurada nos links da Lista de Posts. Usamos a desestruturação para obter de forma direta o parâmetro chamado "id".*/
+  /* Utilizamos a prop params do getStaticProps para poder ter acesso aos parâmetros dinâmicos da rota configurada nos links da Lista de Posts. Usamos a desestruturação para obter de forma direta o parâmetro chamado "id".*/
   const { id } = params;
   console.log(id);
 
