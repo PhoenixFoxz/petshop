@@ -28,6 +28,9 @@ export async function getStaticProps() {
     };
   } catch (error) {
     console.error("Deu ruim:" + error.message);
+    return {
+      notFound: true,
+    };
   }
 }
 //posts pegamos da return linha 20 o {posts}
