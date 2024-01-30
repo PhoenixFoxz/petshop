@@ -14,7 +14,7 @@ export default function Pagina404() {
         <Container>
           <h3>Ops! Algo deu errado!</h3>
           <Image
-            src="/images/404.svg"
+            src="/images/404.svg" //está na pasta public  / images
             width={500}
             height={296}
             alt="Ilustração de um cachorrinho bonitinho"
@@ -27,12 +27,10 @@ export default function Pagina404() {
 
 const Styled404 = styled.section`
   text-align: center;
-
   img {
     max-width: 100%;
   }
-
   h2::before {
-    content: "😱";
+    content: "😱 ";
   }
 `;

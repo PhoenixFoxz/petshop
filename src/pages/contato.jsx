@@ -19,18 +19,19 @@ export default function Contato() {
 
         <Container>
           <form action="" method="post">
-            <div className="label">
-              <input type="text" name="nome" id="nome" placeholder="Nome" />
+            <div>
+              <label htmlFor="nome">Nome:</label>
+              <input type="text" name="nome" id="nome" />
             </div>
-            <div className="label">
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="E-mail"
-              />
+            <div>
+              <label htmlFor="mensagem">E-mail:</label>
+              <input type="email" name="email" id="email" />
             </div>
-            <div className="label">
+
+            <div>
+              <label htmlFor="email">
+                Mensagem: <br />
+              </label>
               <textarea
                 maxLength={500}
                 name="mensagem"
@@ -39,6 +40,7 @@ export default function Contato() {
                 rows="8"
               ></textarea>
             </div>
+
             <div>
               <button type="submit">Enviar mensagem</button>
             </div>
@@ -54,31 +56,40 @@ const StyledContato = styled.section`
     content: "💌";
   }
 
-  .label input,
-  textarea {
-    border: none;
-    box-shadow: var(--sombra-box);
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 20px;
-    font-size: 16px;
-    border-radius: var(--borda-arredondada);
+  // Início Formulário
+
+  form > div {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+
+    & label {
+      font-weight: bold;
+      width: 30%;
+      display: flex;
+      align-items: center;
+    }
+
+    & input,
+    & textarea {
+      width: 70%;
+      border: none;
+      box-shadow: var(--sombra-box);
+      padding: 0.5rem;
+    }
+
+    & button {
+      background-color: var(--cor-logo);
+      color: var(--cor-primaria);
+      padding: 1rem;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--cor-primaria-fundo-hover);
+      }
+    }
   }
 
-  button {
-    margin: 30px;
-    border: none;
-    padding: 20px;
-    margin-left: auto;
-    border-radius: var(--borda-arredondada);
-    font-size: medium;
-    transition: 0.25s;
-    cursor: pointer;
-    box-shadow: var(--sombra-box);
-  }
-
-  button:hover {
-    background: #0b0a3f;
-    color: white;
-  }
+  // Fim Formulário
 `;

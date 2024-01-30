@@ -1,8 +1,10 @@
 import Head from "next/head";
 import styled from "styled-components";
-import ListaPosts from "@/components/ListaPosts";
 
-import { useState, useEffect } from "react"; //importação da linha 8 useState(). Primeiro escreve useState
+import ListaPosts from "@/components/ListaPosts";
+import ListaCategorias from "@/components/ListaCategorias";
+
+import { useState } from "react"; //importação da linha 8 useState(). Primeiro escreve useState
 import serverApi from "./api/server"; // usamos na linha 16
 
 /* EXECUTADA NO SERVIDOR/BACK-END 
@@ -23,20 +25,21 @@ export async function getStaticProps() {
     const categorias = dados.map((post) => post.categoria);
     console.log(categorias);
 
-    /* Após o processamento (desde que não haja erros), a getStaticProps retorna um objeto com uma propriedade chamada "props", e nesta propriedade colocamos um objeto com as props que queremos usar. No caso, usamos uma prop "posts" (podemos dar qualquer nome) e é nela que colocamos os dados. */
-
     /* Gerando um array de categorias ÚNICAS */
     const categoriasUnicas = [...new Set(categorias)];
     console.log(categoriasUnicas);
 
+    /* Após o processamento (desde que não haja erros), a getStaticProps retorna um objeto com uma propriedade chamada "props", e nesta propriedade colocamos um objeto com as props que queremos usar. No caso, usamos uma prop "posts" (podemos dar qualquer nome) e é nela que colocamos os dados. */
     return {
       props: {
         posts: dados,
-        categorias: categoriasUnicas, // [] provisório
+        categorias: categoriasUnicas,
       },
     };
   } catch (error) {
     console.error("Deu ruim:" + error.message);
+
+    /* Esse return  notFound: true é para retorna o erro 404 da pagina404.jsx. Precisa fazer, pois os dados são dinamicos    */
     return {
       notFound: true,
     };
@@ -46,27 +49,42 @@ export async function getStaticProps() {
 export default function Home({ posts, categorias }) {
   //Passa a passo do react-fundamento na parte  produto
   const [listaDePosts, SetListaDePosts] = useState(posts);
-  const [categoriaSelecionada, setCategoriaSelecionada] = useState(null);
+
+  //Fazer o botão Limpar filtro sumir / só aparecer quando clicamos no botão categorias(Bem-estar Comportamento) ai foi feito a const limparfiltro
   const [filtroAtivo, setFiltroAtivo] = useState(false);
 
-  useEffect(() => {
-    if (categoriaSelecionada) {
-      const postsFiltrados = posts.filter(
-        (post) => post.categoria === categoriaSelecionada
-      );
-      SetListaDePosts(postsFiltrados);
-      setFiltroAtivo(true);
-    } else {
-      SetListaDePosts(posts);
-    }
-  }, [categoriaSelecionada, posts]);
+  //Deixar o botão ativo quando clica
+  const [categoriaAtiva, setCategoriaAtiva] = useState("");
+
+  //função para filtrar as categorias(Bem-estar Comportamento) quando aperta botão da linha 85 que está StyledCategorias
+  const filtrar = (event) => {
+    /* Atenção: utilize  textContent  em vez de innerText, pois textContent captura o texto real do HTML/JSX sem levar em consideração estilo CSS. mudamos no css o  text-transform: capitalize a primeira letra era minuscula e deixamos maiuscula*/
+
+    const categoriaEscolhida = event.currentTarget.textContent;
+
+    // esse posts é da função Home
+    const novaListaDePosts = posts.filter(
+      (post) => post.categoria === categoriaEscolhida
+    );
+
+    // Sinalizando o state como filtro ativo (true) - Fazendo o botão Limpar filtro aparecer
+    setFiltroAtivo(true);
+
+    SetListaDePosts(novaListaDePosts);
+
+    // Sinalizando o state com o texto/categoria escolhida  - Deixar o botão ativo quando clica
+    setCategoriaAtiva(categoriaEscolhida);
+  };
 
   const limparFiltro = () => {
-    // Sinalizando o state como filtro inativo (false)
+    //Fazendo o botão Limpar filtro sumir -- Sinalizando o state como filtro inativo (false)
     setFiltroAtivo(false);
 
-    // Atualizando o state da listaDePosts para os posts originais
+    //Atualizando o state da listaDePosts para os posts originais
     SetListaDePosts(posts);
+
+    //Atualizando o state da categoria ativo para vazio
+    setCategoriaAtiva("");
   };
 
   return (
@@ -86,22 +104,17 @@ export default function Home({ posts, categorias }) {
       {/* //Antes era <section> mudamos por causa do css */}
       <StyledHome>
         <h2>Pet Notícias</h2>
+
+        <ListaCategorias
+          /* Recebimento das props -- da ListaCategorias em  components */
+          categorias={categorias}
+          categoriaAtivo={categoriaAtiva}
+          onfiltrar={filtrar}
+          onlimparFiltro={limparFiltro}
+          filtroAtivo={filtroAtivo}
+        />
+
         {/* arrayPosts vem da pasta api / array-posts */}
-        <div>
-          {categorias.map((categoria, indice) => {
-            return (
-              <StyledButton
-                key={indice}
-                onClick={() => setCategoriaSelecionada(categoria)}
-              >
-                {categoria}
-              </StyledButton>
-            );
-          })}
-          {filtroAtivo && (
-            <StyledButton onClick={limparFiltro}>Limpar filtro</StyledButton>
-          )}
-        </div>
         <ListaPosts posts={listaDePosts} />
       </StyledHome>
     </>
@@ -111,23 +124,5 @@ export default function Home({ posts, categorias }) {
 const StyledHome = styled.section`
   h2::before {
     content: "📰";
-  }
-`;
-
-const StyledButton = styled.button`
-  text-transform: capitalize;
-  margin: 30px;
-  border: none;
-  padding: 20px;
-  margin-left: auto;
-  border-radius: var(--borda-arredondada);
-  font-size: medium;
-  transition: 0.25s;
-  cursor: pointer;
-  box-shadow: var(--sombra-box);
-
-  &:hover {
-    background: #0b0a3f;
-    color: white;
   }
 `;
