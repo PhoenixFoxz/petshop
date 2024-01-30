@@ -11,6 +11,8 @@ n dev
 - ctrl +C --> para parar o CMD ou qualquer
 - atalho windows mais .(ponto) trás opções de Ícones/emojis
 
+# PetShop: projeto Next.js
+
 ## Branch 19-migração-api-fake-para-firebase-json
 
 ## Firebase
@@ -31,7 +33,11 @@ Como se trata de uma API JSON, podemos utilizar qualquer um dos verbos HTTP para
 - PATCH: atualizar parcialmente
 - DELETE: excluir
 
-# PetShop: projeto Next.js
+### Ajustes necessários para a aplicação usar a API Firebase JSON
+
+- Em index.jsx, alterar a getStaticProps ajustando o endpoint para `posts.json` e gerando um novo array com os posts/objetos carregados a partir da `const dados`
+
+- Em `[id].jsx`, alterar a `getStaticProps` ajustando o endpoint para `/posts/${id}.json`.
 
 ## Recursos utilizados
 
