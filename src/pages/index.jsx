@@ -17,14 +17,35 @@ export async function getStaticProps() {
   try {
     const resposta = await fetch(`${serverApi}/posts.json`); // antes era `http://10.20.46.36:2112/posts`
     const dados = await resposta.json();
-    console.log(dados);
 
     if (!resposta.ok) {
       throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
     }
 
+    /* Colocando os dados dos objetos dentro de um array 
+    
+    1) Object.keys(dados): extrair as chaves/id de cada objeto para um array.
+
+    2) Map no array de chaves, em que retornamos um novo objeto.
+
+    3) Cada novo objeto (representado por post) é criado com os dados existentes (por isso, usamos o spread)
+
+    4) No caso do id, atribuimos a própria chave de cada objeto. Portanto, em vez de ids numéricos, os ids passam a ser na aplicação o próprio hash/código de cada post. 
+
+
+
+    */
+    const arrayDePosts = Object.keys(dados).map((post) => {
+      return {
+        ...dados[post],
+        id: post,
+      };
+    });
+
+    console.log(arrayDePosts);
+
     /* Extraindo as categorias dos posts para um novo array */
-    const categorias = dados.map((post) => post.categoria);
+    const categorias = arrayDePosts.map((post) => post.categoria);
     console.log(categorias);
 
     /* Gerando um array de categorias ÚNICAS */
@@ -34,7 +55,7 @@ export async function getStaticProps() {
     /* Após o processamento (desde que não haja erros), a getStaticProps retorna um objeto com uma propriedade chamada "props", e nesta propriedade colocamos um objeto com as props que queremos usar. No caso, usamos uma prop "posts" (podemos dar qualquer nome) e é nela que colocamos os dados. */
     return {
       props: {
-        posts: dados,
+        posts: arrayDePosts,
         categorias: categoriasUnicas,
       },
     };
