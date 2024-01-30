@@ -10,7 +10,7 @@ export default function Document() {
           type="image/png"
           sizes="256x256"
         />
-        <meta name="author" content="Aline Teixeira" />
+        <meta name="author" content="Felipe Moura Martins" />
       </Head>
       <body>
         <Main />
