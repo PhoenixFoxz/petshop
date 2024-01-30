@@ -10,12 +10,14 @@ import serverApi from "./api/server"; // usamos na linha 16
 /* EXECUTADA NO SERVIDOR/BACK-END 
             Função getStaticProps 
 Utilizada para execução de código server-side (neste caso, fetch na API com o objetivo de gerar props com os dados processados)*/
+
 export async function getStaticProps() {
   console.log("Código de servidor (não aparece no cliente)...");
 
   try {
-    const resposta = await fetch(`${serverApi}/posts`); // antes era `http://10.20.46.34:2112/posts`
+    const resposta = await fetch(`${serverApi}/posts.json`); // antes era `http://10.20.46.36:2112/posts`
     const dados = await resposta.json();
+    console.log(dados);
 
     if (!resposta.ok) {
       throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
