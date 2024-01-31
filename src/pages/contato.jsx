@@ -107,8 +107,12 @@ const StyledContato = styled.section`
     content: "💌";
   }
 
+  /* Seletor + significa "elemento adjacente", ou seja, pegar os parágrafos que estão depois da div. */
+
   p {
     color: red;
+    font-size: 0.8rem;
+    font-style: italic;
   }
 
   .label input,
