@@ -126,7 +126,7 @@ export default function Home({ posts, categorias }) {
       </Head>
       {/* //Antes era <section> mudamos por causa do css */}
       <StyledHome>
-        <h2>Pet Notícias</h2>
+        <h2>Pet Notícias: {listaDePosts.length}</h2>
 
         <ListaCategorias
           /* Recebimento das props -- da ListaCategorias em  components */
