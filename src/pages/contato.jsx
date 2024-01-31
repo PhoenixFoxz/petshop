@@ -6,7 +6,11 @@ import serverApi from "./api/server";
 import { useRouter } from "next/router";
 
 export default function Contato() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   let router = useRouter();
 
   const enviarContato = async (dados) => {
@@ -50,25 +54,31 @@ export default function Contato() {
           >
             <div className="label">
               <input
-                {...register("nome")}
+                {...register("nome", { required: true })}
                 type="text"
                 name="nome"
                 id="nome"
                 placeholder="Nome"
               />
             </div>
+            {/* ? é conhecido como "Optional Chaining [encadeamento opcional]" 
+            É usado para evitar erros caso uma propriedade de um objeto seja null ou undefined. Caso não seja null/undefined, aí sim verificamos se o type é required para seguir com a validação*/}
+            {errors.nome?.type == "required" && <p>Você deve digitar o nome</p>}
             <div className="label">
               <input
-                {...register("email")}
+                {...register("email", { required: true })}
                 type="email"
                 name="email"
                 id="email"
                 placeholder="E-mail"
               />
             </div>
+            {errors.email?.type == "required" && (
+              <p>Você deve digitar o email</p>
+            )}
             <div className="label">
               <textarea
-                {...register("mensagem")}
+                {...register("mensagem", { required: true, minLength: 20 })}
                 maxLength={500}
                 name="mensagem"
                 id="mensagem"
@@ -76,6 +86,12 @@ export default function Contato() {
                 rows="8"
               ></textarea>
             </div>
+            {errors.mensagem?.type == "required" && (
+              <p>Você deve digitar uma mensagem</p>
+            )}
+            {errors.mensagem?.type == "minLength" && (
+              <p>Escreva no mínimo 20 caracteres</p>
+            )}
             <div>
               <button type="submit">Enviar mensagem</button>
             </div>
@@ -89,6 +105,10 @@ export default function Contato() {
 const StyledContato = styled.section`
   h2::before {
     content: "💌";
+  }
+
+  p {
+    color: red;
   }
 
   .label input,
