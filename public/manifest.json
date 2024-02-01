@@ -1,7 +1,7 @@
 {
-  "short_name": "",
-  "name": "",
-  "description": "",
+  "short_name": "PetShop Moura",
+  "name": "PetShop incrível! Não tem nada melhor",
+  "description": "Exemplo de uma PWA criada com Next.js",
   "icons": [
     {
       "src": "images/favicon.png",
